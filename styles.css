@@ -1,0 +1,29 @@
+/* selects all elements before and after */
+*, *::before, *::after {
+    box-sizing: border-box; /* border-box includes any border/padding into total indicated width */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: normal;
+}
+
+body {
+    margin: 0; /* remove margin & padding so background fills entire screen */
+    padding: 0;
+    background-image: linear-gradient(to right, white, rgb(173, 13, 13));
+}
+
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* fills 100 viewport height of screen vertically */
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px); /* min of 120px tall, and max at auto to grow per user input */
+}
+
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.75);
+}
