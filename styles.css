@@ -8,13 +8,13 @@
 body {
     margin: 0; /* remove margin & padding so background fills entire screen */
     padding: 0;
-    background-image: linear-gradient(to right, white, rgb(173, 13, 13));
+    background-image: linear-gradient(to right, rgb(238, 192, 192), rgb(93, 189, 203));
 }
 
 .calculator-grid {
     display: grid;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; 
+    align-content: center; /* align everything in content, not just items */
     min-height: 100vh; /* fills 100 viewport height of screen vertically */
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(120px, auto) repeat(5, 100px); /* min of 120px tall, and max at auto to grow per user input */
@@ -26,4 +26,34 @@ body {
     border: 1px solid white;
     outline: none;
     background-color: rgba(255, 255, 255, 0.75);
+}
+
+.calculator-grid > button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.span-two {
+    grid-column: span 2; /* 'AC' and '=' will span two spaces */
+}
+
+.output {
+    grid-column: 1 / -1; /* the output section will span the whole column */
+    background-color: rgb(0, 0, 0, 0.75);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word; /* wraps and breaks word to next line if input gets too long */
+    word-break: break-all;
+}
+
+.output .previous-operand {
+    color: rgb(255, 255, 255, 0.75);
+    font-size: 1rem;
+}
+
+.output .current-operand {
+    color: rgba(255, 255, 255);
+    font-size: 2.5rem;
 }
