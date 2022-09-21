@@ -1,35 +1,48 @@
 /* selects all elements before and after */
-*, *::before, *::after {
+html {
     box-sizing: border-box; /* border-box includes any border/padding into total indicated width */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: normal;
-}
+    overflow: hidden;
+    background: black;
+    height: 100%;
+    position: relative;
+  z-index: -1;
+} 
 
 body {
     margin: 0; /* remove margin & padding so background fills entire screen */
     padding: 0;
-    background-image: linear-gradient(to right, rgb(238, 192, 192), rgb(93, 189, 203));
+    height: 100%;
 }
 
 .calculator-grid {
     display: grid;
     justify-content: center; 
     align-content: center; /* align everything in content, not just items */
-    min-height: 100vh; /* fills 100 viewport height of screen vertically */
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(120px, auto) repeat(5, 100px); /* min of 120px tall, and max at auto to grow per user input */
+    margin: 50px 10%;
+    padding: 3rem;
+    position: relative;
+    z-index: 1;
 }
+
+#canv {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
 
 .calculator-grid > button {
     cursor: pointer;
     font-size: 2rem;
-    border: 1px solid white;
     outline: none;
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.90);
 }
 
 .calculator-grid > button:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(164, 164, 161, 0.9);
 }
 
 .span-two {
@@ -38,12 +51,14 @@ body {
 
 .output {
     grid-column: 1 / -1; /* the output section will span the whole column */
-    background-color: rgb(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.85);
+    border: 1px solid white;
+    margin-bottom: 1px;
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
     flex-direction: column;
-    padding: 10px;
+    padding: 20px;
     word-wrap: break-word; /* wraps and breaks word to next line if input gets too long */
     word-break: break-all;
 }
